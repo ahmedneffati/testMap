@@ -8,10 +8,15 @@ using testMap.RestClient;
 
 namespace testMap.Services
 {
-    class TerrainServices
+    class TerrainServices<t>
     {
-        RestClient<Terrain> restClient = new RestClient<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        public async Task<List<Terrain>> getTerrainsAsync()
+        RestClient<t> restClient;
+        public TerrainServices(string ch)
+        {
+             restClient = new RestClient<t>(ch);
+        }
+        //  RestClient<Terrain> restClient = new RestClient<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
+        public async Task<List<t>> getTerrainsAsync()
         {
 
 
@@ -21,7 +26,7 @@ namespace testMap.Services
         }
 
 
-        public async Task PostTerrainsAsync(Terrain e)
+        public async Task PostTerrainsAsync(t e)
         {
 
             var Terrains = await restClient.PostAsync(e);
@@ -29,7 +34,7 @@ namespace testMap.Services
 
 
         }
-        public async Task PutTerrainsAsync(int id, Terrain e)
+        public async Task PutTerrainsAsync(int id, t e)
         {
 
             var Terrains = await restClient.PutAsync(id, e);

@@ -14,6 +14,7 @@ namespace testMap.ViewModels
 {
    public class TerrainViewModel : INotifyPropertyChanged
     {
+        TerrainServices<Terrain> u = new TerrainServices<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
         private List<Terrain> _TerrainsList;
 
 
@@ -51,7 +52,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new TerrainServices();
+                   
                     await u.PostTerrainsAsync(_TerrainsAdd);
                     
                 });
@@ -64,8 +65,8 @@ namespace testMap.ViewModels
 
         public async Task InitializerDataASYNC()
         {
-            var TerrainsServ = new TerrainServices();
-            TerrainsList = await TerrainsServ.getTerrainsAsync();
+            
+            TerrainsList = await u.getTerrainsAsync();
 
         }
 
@@ -81,7 +82,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new TerrainServices();
+                 
                     await u.PutTerrainsAsync(_TerrainsAdd.Id, _TerrainsAdd);
                 });
             }
@@ -93,7 +94,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new TerrainServices();
+                 
                     await u.DeleteTerrainsAsync(_TerrainsAdd.Id);
                 });
             }

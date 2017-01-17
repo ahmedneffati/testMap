@@ -14,6 +14,7 @@ namespace testMap.ViewModels
 {
     class JoueurViewModel : INotifyPropertyChanged
     {
+        JoueurServices<Joueur> u = new JoueurServices<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
         private List<Joueur> _JoueursList;
         public List<Joueur> JoueursList
         {
@@ -47,7 +48,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new JoueurServices<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
+                  
                     await u.PostJoueursAsync(_JoueursAdd);
                     NavigationPage _navPage = new NavigationPage(new InscriptionJoueur());
                     await _navPage.PushAsync(new AjouterTerrain());
@@ -61,8 +62,8 @@ namespace testMap.ViewModels
 
         private async Task InitializerDataASYNC()
         {
-            var JoueursServ = new JoueurServices<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
-            JoueursList = await JoueursServ.getJoueursAsync();
+         
+            JoueursList = await u.getJoueursAsync();
 
         }
 
@@ -78,7 +79,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new JoueurServices<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
+             
                     await u.PutJoueursAsync(_JoueursAdd.Email, _JoueursAdd);
                 });
             }
@@ -90,7 +91,7 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                    var u = new JoueurServices<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
+         
                     await u.DeleteJoueursAsync(_JoueursAdd.Email);
                 });
             }

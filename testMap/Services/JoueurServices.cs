@@ -11,9 +11,10 @@ namespace testMap.Services
     class JoueurServices<t>
     {
         RestClientString<t> restClient;
-        public JoueurServices(string ch){
+        public JoueurServices(string ch)
+        {
              restClient = new RestClientString<t>(ch);
-            }
+        }
        // RestClientString<t> restClient = new RestClientString<t>("http://takwira.azurewebsites.net/api/Joueurs");
         public async Task<List<t>> getJoueursAsync()
         {
