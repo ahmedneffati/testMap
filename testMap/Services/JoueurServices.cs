@@ -8,10 +8,14 @@ using testMap.RestClient;
 
 namespace testMap.Services
 {
-    class JoueurServices
+    class JoueurServices<t>
     {
-        RestClientString<Joueur> restClient = new RestClientString<Joueur>("http://takwira.azurewebsites.net/api/Joueurs");
-        public async Task<List<Joueur>> getJoueursAsync()
+        RestClientString<t> restClient;
+        public JoueurServices(string ch){
+             restClient = new RestClientString<t>(ch);
+            }
+       // RestClientString<t> restClient = new RestClientString<t>("http://takwira.azurewebsites.net/api/Joueurs");
+        public async Task<List<t>> getJoueursAsync()
         {
 
             var Joueur = await restClient.GetAsync();
@@ -20,13 +24,13 @@ namespace testMap.Services
         }
 
 
-        public async Task PostJoueursAsync(Joueur e)
+        public async Task PostJoueursAsync(t e)
         {
 
             var Joueur = await restClient.PostAsync(e);
 
         }
-        public async Task PutJoueursAsync(string id, Joueur e)
+        public async Task PutJoueursAsync(string id, t e)
         {
 
             var Joueur = await restClient.PutAsync(id, e);

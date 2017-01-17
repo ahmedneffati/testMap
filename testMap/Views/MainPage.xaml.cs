@@ -8,6 +8,10 @@ namespace testMap
 {
     public partial class MainPage : ContentPage
     {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
         private TerrainViewModel fvm;
         public MainPage(TerrainViewModel f)
         {

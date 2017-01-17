@@ -20,9 +20,9 @@ namespace testMap
 
         protected override async void OnStart()
         {
-        
+            MainPage = new Menu();
            
-            var four = new TerrainViewModel(); 
+         /*   var four = new TerrainViewModel(); 
             await four.InitializerDataASYNC();
             MainPage = new TabbedPage
             {
@@ -34,6 +34,7 @@ namespace testMap
                 }
 
             };
+            */
 
         }
 

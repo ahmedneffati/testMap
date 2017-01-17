@@ -48,7 +48,12 @@
     <Compile Include="Models\Terrain.cs" />
     <Compile Include="RestClient\RestClient.cs" />
     <Compile Include="RestClient\RestClientString.cs" />
+    <Compile Include="Services\HoraireServices.cs" />
     <Compile Include="Services\JoueurServices.cs" />
+    <Compile Include="Services\MatchJoueurServices.cs" />
+    <Compile Include="Services\MatchServices.cs" />
+    <Compile Include="Services\ProprietaireServices.cs" />
+    <Compile Include="Services\ReservationServices.cs" />
     <Compile Include="Services\TerrainServices.cs" />
     <Compile Include="ViewModels\JoueurViewModel.cs" />
     <Compile Include="ViewModels\TerrainViewModel.cs" />
