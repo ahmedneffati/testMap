@@ -1,5 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="testMap.Views.AjouterTerrain">
-</ContentPage>
+             x:Class="testMap.Views.AjouterTerrain"
+                  xmlns:ViewModels="clr-namespace:testMap.ViewModels;assembly=testMap"
+          Title="Creer Terrain"
+             >
+    <ContentPage.BindingContext>
+        <ViewModels:TerrainViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+            <StackLayout Orientation="Vertical"
+                 Spacing="18">
+
+                <Entry Text="{Binding TerrainsAdd.Nom, Mode==TwoWay} " Placeholder="Nom terrain" />
+
+                <Entry  Text="{Binding TerrainsAdd.Description, Mode==TwoWay}" Placeholder="Description"/>
+
+
+                <Entry Text="{Binding TerrainsAdd.Longitude, Mode==TwoWay} " Placeholder="Longitude" />
+
+                <Entry  Text="{Binding TerrainsAdd.Latitude, Mode==TwoWay}" Placeholder="Latitude" />
+            <Entry  Placeholder="Longitude" x:Name="lon" />
+
+            <Entry   Placeholder="Latitude" x:Name="lat"/>
+
+
+            <Button Text="Post Joueur" 
+                Command="{Binding PostCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+        
+</ContentPage> 

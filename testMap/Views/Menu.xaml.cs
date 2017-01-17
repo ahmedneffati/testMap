@@ -27,7 +27,7 @@ namespace testMap.Views
         }
         public void AllerAjouterTerrain(object sender, EventArgs e)
         {
-            Detail = new NavigationPage(new InscriptionJoueur());
+            Detail = new NavigationPage(new AjouterTerrain());
         }
         }
 }
