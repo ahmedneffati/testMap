@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using testMap.ViewModels;
+using testMap.Views;
 using Xamarin.Forms;
-using XamarinForms.ViewModels;
-using XamarinForms.Views;
+
 
 namespace testMap
 {
@@ -22,13 +22,15 @@ namespace testMap
         {
         
            
-            var four = new FoursquareViewModel(); 
-            await four.InitDataAsync();
+            var four = new TerrainViewModel(); 
+            await four.InitializerDataASYNC();
             MainPage = new TabbedPage
             {
                 Children ={
                     new MainPage(four),
-                new FoursquareViewPage(four)
+                   new InscriptionJoueur()
+
+
                 }
 
             };
