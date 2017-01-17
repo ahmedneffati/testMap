@@ -48,15 +48,42 @@
     <Compile Include="Models\Terrain.cs" />
     <Compile Include="RestClient\RestClient.cs" />
     <Compile Include="RestClient\RestClientString.cs" />
-    <Compile Include="Services\JoueurServices.cs" />
-    <Compile Include="Services\TerrainServices.cs" />
+    <Compile Include="Services\StringServices.cs" />
+    <Compile Include="Services\Services.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\HoraireViewModel.cs" />
     <Compile Include="ViewModels\JoueurViewModel.cs" />
+    <Compile Include="ViewModels\MatchJoueurViewModel.cs" />
+    <Compile Include="ViewModels\MatchViewModel.cs" />
+    <Compile Include="ViewModels\ProprietaireViewModel.cs" />
+    <Compile Include="ViewModels\ReservationViewModel.cs" />
     <Compile Include="ViewModels\TerrainViewModel.cs" />
     <Compile Include="Views\AjouterTerrain.xaml.cs">
       <DependentUpon>AjouterTerrain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AnscriptionProprietaireTerrain.xaml.cs">
+      <DependentUpon>AnscriptionProprietaireTerrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Connection.xaml.cs">
+      <DependentUpon>Connection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsulterMatchs.xaml.cs">
+      <DependentUpon>ConsulterMatchs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConsulterReservation.xaml.cs">
+      <DependentUpon>ConsulterReservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreerMatch.xaml.cs">
+      <DependentUpon>CreerMatch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreerReservation.xaml.cs">
+      <DependentUpon>CreerReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InscriptionJoueur.xaml.cs">
       <DependentUpon>InscriptionJoueur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InscrireMatch.xaml.cs">
+      <DependentUpon>InscrireMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -125,6 +152,48 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AnscriptionProprietaireTerrain.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Connection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CreerReservation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ConsulterReservation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CreerMatch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\InscrireMatch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ConsulterMatchs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

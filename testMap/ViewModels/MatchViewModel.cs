@@ -12,36 +12,36 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    public class MatchViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
+        Services<Match> u = new Services<Match>("http://takwira.azurewebsites.net/api/Matchs/");
+        private List<Match> _MatchsList;
 
 
-        public List<Terrain> TerrainsList
+        public List<Match> MatchsList
         {
             get
             {
-                return _TerrainsList;
+                return _MatchsList;
             }
 
             set
             {
-                _TerrainsList = value;
+                _MatchsList = value;
                 OnPropertyChanged();
             }
         }
 
-        private Terrain _TerrainsAdd = new Terrain();
+        private Match _MatchsAdd = new Match();
 
-        public Terrain GetTerrainsAdd()
+        public Match GetMatchsAdd()
         {
-            return _TerrainsAdd;
+            return _MatchsAdd;
         }
 
-        public void SetTerrainsAdd(Terrain value)
+        public void SetMatchsAdd(Match value)
         {
-            _TerrainsAdd = value;
+            _MatchsAdd = value;
             OnPropertyChanged();
         }
 
@@ -52,21 +52,21 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                    await u.PostModelsAsync(_MatchsAdd);
+
                 });
             }
         }
-        public TerrainViewModel()
+        public MatchViewModel()
         {
             InitializerDataASYNC();
         }
 
         public async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            MatchsList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +82,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_MatchsAdd.Id, _MatchsAdd);
                 });
             }
         }
@@ -94,8 +94,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_MatchsAdd.Id);
                 });
             }
         }

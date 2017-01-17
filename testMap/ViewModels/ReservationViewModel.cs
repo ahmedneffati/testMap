@@ -12,36 +12,36 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    public class ReservationViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
+        Services<Reservation> u = new Services<Reservation>("http://takwira.azurewebsites.net/api/Reservations/");
+        private List<Reservation> _ReservationsList;
 
 
-        public List<Terrain> TerrainsList
+        public List<Reservation> ReservationsList
         {
             get
             {
-                return _TerrainsList;
+                return _ReservationsList;
             }
 
             set
             {
-                _TerrainsList = value;
+                _ReservationsList = value;
                 OnPropertyChanged();
             }
         }
 
-        private Terrain _TerrainsAdd = new Terrain();
+        private Reservation _ReservationsAdd = new Reservation();
 
-        public Terrain GetTerrainsAdd()
+        public Reservation GetReservationsAdd()
         {
-            return _TerrainsAdd;
+            return _ReservationsAdd;
         }
 
-        public void SetTerrainsAdd(Terrain value)
+        public void SetReservationsAdd(Reservation value)
         {
-            _TerrainsAdd = value;
+            _ReservationsAdd = value;
             OnPropertyChanged();
         }
 
@@ -52,21 +52,21 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                    await u.PostModelsAsync(_ReservationsAdd);
+
                 });
             }
         }
-        public TerrainViewModel()
+        public ReservationViewModel()
         {
             InitializerDataASYNC();
         }
 
         public async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            ReservationsList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +82,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_ReservationsAdd.Id, _ReservationsAdd);
                 });
             }
         }
@@ -94,8 +94,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_ReservationsAdd.Id);
                 });
             }
         }

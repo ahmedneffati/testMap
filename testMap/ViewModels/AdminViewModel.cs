@@ -12,39 +12,35 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    class AdminViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
-
-
-        public List<Terrain> TerrainsList
+        StringServices<Admin> u = new StringServices<Admin>("http://takwira.azurewebsites.net/api/Admins");
+        private List<Admin> _AdminsList;
+        public List<Admin> AdminsList
         {
             get
             {
-                return _TerrainsList;
+                return _AdminsList;
             }
-
             set
             {
-                _TerrainsList = value;
+                _AdminsList = value;
                 OnPropertyChanged();
             }
         }
-
-        private Terrain _TerrainsAdd = new Terrain();
-
-        public Terrain GetTerrainsAdd()
+        private Admin _AdminsAdd = new Admin();
+        public Admin AdminsAdd
         {
-            return _TerrainsAdd;
+            get
+            {
+                return _AdminsAdd;
+            }
+            set
+            {
+                _AdminsAdd = value;
+                OnPropertyChanged();
+            }
         }
-
-        public void SetTerrainsAdd(Terrain value)
-        {
-            _TerrainsAdd = value;
-            OnPropertyChanged();
-        }
-
         public Command PostCommand
         {
             get
@@ -52,21 +48,22 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                  await u.PostAsync(_AdminsAdd);
+                   // NavigationPage _navPage = new NavigationPage(new InscriptionAdmin());
+                    //await _navPage.PushAsync(new AjouterTerrain());
                 });
             }
         }
-        public TerrainViewModel()
+        public AdminViewModel()
         {
             InitializerDataASYNC();
         }
 
-        public async Task InitializerDataASYNC()
+        private async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            AdminsList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +79,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_AdminsAdd.Email, _AdminsAdd);
                 });
             }
         }
@@ -94,8 +91,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_AdminsAdd.Email);
                 });
             }
         }

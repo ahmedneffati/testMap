@@ -12,39 +12,35 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    class ProprietaireViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
-
-
-        public List<Terrain> TerrainsList
+        StringServices<Proprietaire> u = new StringServices<Proprietaire>("http://takwira.azurewebsites.net/api/Proprietaires");
+        private List<Proprietaire> _ProprietairesList;
+        public List<Proprietaire> ProprietairesList
         {
             get
             {
-                return _TerrainsList;
+                return _ProprietairesList;
             }
-
             set
             {
-                _TerrainsList = value;
+                _ProprietairesList = value;
                 OnPropertyChanged();
             }
         }
-
-        private Terrain _TerrainsAdd = new Terrain();
-
-        public Terrain GetTerrainsAdd()
+        private Proprietaire _ProprietairesAdd = new Proprietaire();
+        public Proprietaire ProprietairesAdd
         {
-            return _TerrainsAdd;
+            get
+            {
+                return _ProprietairesAdd;
+            }
+            set
+            {
+                _ProprietairesAdd = value;
+                OnPropertyChanged();
+            }
         }
-
-        public void SetTerrainsAdd(Terrain value)
-        {
-            _TerrainsAdd = value;
-            OnPropertyChanged();
-        }
-
         public Command PostCommand
         {
             get
@@ -52,21 +48,22 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                    await u.PostAsync(_ProprietairesAdd);
+                    //NavigationPage _navPage = new NavigationPage(new InscriptionProprietaire());
+                    // await _navPage.PushAsync(new AjouterTerrain());
                 });
             }
         }
-        public TerrainViewModel()
+        public ProprietaireViewModel()
         {
             InitializerDataASYNC();
         }
 
-        public async Task InitializerDataASYNC()
+        private async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            ProprietairesList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +79,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_ProprietairesAdd.Email, _ProprietairesAdd);
                 });
             }
         }
@@ -94,8 +91,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_ProprietairesAdd.Email);
                 });
             }
         }

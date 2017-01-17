@@ -12,36 +12,36 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    public class MatchJoueurViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
+        Services<MatchJoueur> u = new Services<MatchJoueur>("http://takwira.azurewebsites.net/api/MatchJoueurs/");
+        private List<MatchJoueur> _MatchJoueursList;
 
 
-        public List<Terrain> TerrainsList
+        public List<MatchJoueur> MatchJoueursList
         {
             get
             {
-                return _TerrainsList;
+                return _MatchJoueursList;
             }
 
             set
             {
-                _TerrainsList = value;
+                _MatchJoueursList = value;
                 OnPropertyChanged();
             }
         }
 
-        private Terrain _TerrainsAdd = new Terrain();
+        private MatchJoueur _MatchJoueursAdd = new MatchJoueur();
 
-        public Terrain GetTerrainsAdd()
+        public MatchJoueur GetMatchJoueursAdd()
         {
-            return _TerrainsAdd;
+            return _MatchJoueursAdd;
         }
 
-        public void SetTerrainsAdd(Terrain value)
+        public void SetMatchJoueursAdd(MatchJoueur value)
         {
-            _TerrainsAdd = value;
+            _MatchJoueursAdd = value;
             OnPropertyChanged();
         }
 
@@ -52,21 +52,21 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                    await u.PostModelsAsync(_MatchJoueursAdd);
+
                 });
             }
         }
-        public TerrainViewModel()
+        public MatchJoueurViewModel()
         {
             InitializerDataASYNC();
         }
 
         public async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            MatchJoueursList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +82,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_MatchJoueursAdd.Id, _MatchJoueursAdd);
                 });
             }
         }
@@ -94,8 +94,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_MatchJoueursAdd.Id);
                 });
             }
         }

@@ -12,36 +12,36 @@ using Xamarin.Forms;
 
 namespace testMap.ViewModels
 {
-   public class TerrainViewModel : INotifyPropertyChanged
+    public class HoraireViewModel : INotifyPropertyChanged
     {
-        Services<Terrain> u = new Services<Terrain>("http://takwira.azurewebsites.net/api/Terrains/");
-        private List<Terrain> _TerrainsList;
+        Services<Horaire> u = new Services<Horaire>("http://takwira.azurewebsites.net/api/Horaires/");
+        private List<Horaire> _HorairesList;
 
 
-        public List<Terrain> TerrainsList
+        public List<Horaire> HorairesList
         {
             get
             {
-                return _TerrainsList;
+                return _HorairesList;
             }
 
             set
             {
-                _TerrainsList = value;
+                _HorairesList = value;
                 OnPropertyChanged();
             }
         }
 
-        private Terrain _TerrainsAdd = new Terrain();
+        private Horaire _HorairesAdd = new Horaire();
 
-        public Terrain GetTerrainsAdd()
+        public Horaire GetHorairesAdd()
         {
-            return _TerrainsAdd;
+            return _HorairesAdd;
         }
 
-        public void SetTerrainsAdd(Terrain value)
+        public void SetHorairesAdd(Horaire value)
         {
-            _TerrainsAdd = value;
+            _HorairesAdd = value;
             OnPropertyChanged();
         }
 
@@ -52,21 +52,21 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                   
-                    await u.PostModelsAsync(_TerrainsAdd);
-                    
+
+                    await u.PostModelsAsync(_HorairesAdd);
+
                 });
             }
         }
-        public TerrainViewModel()
+        public HoraireViewModel()
         {
             InitializerDataASYNC();
         }
 
         public async Task InitializerDataASYNC()
         {
-            
-            TerrainsList = await u.getModelsAsync();
+
+            HorairesList = await u.getModelsAsync();
 
         }
 
@@ -82,8 +82,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.PutModelsAsync(_TerrainsAdd.Id, _TerrainsAdd);
+
+                    await u.PutModelsAsync(_HorairesAdd.Id, _HorairesAdd);
                 });
             }
         }
@@ -94,8 +94,8 @@ namespace testMap.ViewModels
 
                 return new Command(async () =>
                 {
-                 
-                    await u.DeleteModelsAsync(_TerrainsAdd.Id);
+
+                    await u.DeleteModelsAsync(_HorairesAdd.Id);
                 });
             }
         }
